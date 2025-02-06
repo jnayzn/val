@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Veux-tu être ma Valentine ?</title>
+  <style>
+    body {
+      font-family: 'Arial', sans-serif;
+      background-color: #ffebee;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+      text-align: center;
+    }
+    .container {
+      background-color: #fff;
+      padding: 40px;
+      border-radius: 15px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+      max-width: 400px;
+      position: relative;
+    }
+    h1 {
+      color: #e91e63;
+      font-size: 2.5em;
+      margin-bottom: 20px;
+    }
+    p {
+      color: #333;
+      font-size: 1.2em;
+      margin-bottom: 30px;
+    }
+    .button {
+      background-color: #e91e63;
+      color: white;
+      padding: 15px 30px;
+      border: none;
+      border-radius: 25px;
+      font-size: 1.2em;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+      margin: 5px;
+    }
+    .button:hover {
+      background-color: #c2185b;
+    }
+    .hidden {
+      display: none;
+    }
+    .message {
+      margin-top: 20px;
+      font-size: 1.5em;
+      color: #e91e63;
+    }
+    #noButton {
+      background-color: #9e9e9e;
+    }
+    #noButton:hover {
+      background-color: #757575;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Will You Be My Valentine?</h1>
+    <p>My sweetheart, you are the most important girl in my life. So, do you want to be my Valentine this year</p>
+    <button class="button" id="yesButton">OUI</button>
+    <button class="button" id="noButton">NON</button>
+    <div id="responseMessage" class="hidden">
+      <p class="message">Youppee! You said YES! 🎉 I love you more than anything ❤️</p>
+    </div>
+  </div>
+
+  <script>
+    // Récupérer les éléments
+    const yesButton = document.getElementById('yesButton');
+    const noButton = document.getElementById('noButton');
+    const responseMessage = document.getElementById('responseMessage');
+
+    // Fonction pour déplacer le bouton "NON"
+    function moveNoButton() {
+      const x = Math.random() * (window.innerWidth - noButton.offsetWidth);
+      const y = Math.random() * (window.innerHeight - noButton.offsetHeight);
+      noButton.style.position = 'absolute';
+      noButton.style.left = `${x}px`;
+      noButton.style.top = `${y}px`;
+    }
+
+    // Événement pour le bouton "OUI"
+    yesButton.addEventListener('click', () => {
+      responseMessage.classList.remove('hidden');
+      yesButton.disabled = true;
+      noButton.style.display = 'none'; // Cacher le bouton "NON"
+    });
+
+    // Événement pour le bouton "NON"
+    noButton.addEventListener('click', moveNoButton);
+    noButton.addEventListener('mouseover', moveNoButton);
+  </script>
+</body>
+</html>
